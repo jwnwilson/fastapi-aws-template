@@ -43,7 +43,7 @@ Sample json payload:
         "ApproximateFirstReceiveTimestamp": "1523232000001"
       },
       "messageAttributes": {},
-      "md5OfBody": "{{{md5_of_body}}}",
+      "md5OfBody": "{md5_of_body}",
       "eventSource": "aws:sqs",
       "eventSourceARN": "arn:aws:sqs:us-east-1:123456789012:MyQueue",
       "awsRegion": "us-east-1"
