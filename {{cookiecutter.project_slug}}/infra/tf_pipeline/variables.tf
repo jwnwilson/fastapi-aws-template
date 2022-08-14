@@ -21,9 +21,9 @@ variable "project" {
   default = "{{cookiecutter.project_slug}}"
 }
 
-variable "ecr_api_url" {}
+variable "ecr_url" {}
 
-variable "api_repo" {
+variable "ecr_repo" {
   description = "Name of container image repository"
   default     = "{{cookiecutter.project_slug}}_api"
 }

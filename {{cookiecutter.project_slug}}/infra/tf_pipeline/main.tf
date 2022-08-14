@@ -11,9 +11,9 @@ provider "aws" {
 }
 
 module "docker_images" {
-  source = "./modules/images/aws"
+  source = "github.com/jwnwilson/terraform-aws-modules/modules/ecr"
 
-  api_repo        = var.api_repo
+  api_repo        = var.ecr_repo
   access_key      = var.aws_access_key
   secret_key      = var.aws_secret_key
   region          = var.aws_region
