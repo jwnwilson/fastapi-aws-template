@@ -21,6 +21,7 @@ module "{{cookiecutter.project_slug}}_api" {
   environment       = var.environment
   project           = "{{cookiecutter.project_slug}}"
   ecr_url           = var.ecr_url
+  docker_tag        = var.docker_tag
 }
 
 module "api_gateway" {
