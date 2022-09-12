@@ -21,7 +21,12 @@ def get_current_user(
     request: Request, credentials: HTTPBasicCredentials = Depends(security)
 ) -> UserData:
     # attempt to get user id from authorizer logic
-    user_id = request.scope.get("aws", {}).get("context", {}).get("user_id")
+    user_id = (
+        request.scope.get("aws.event", {})
+        .get("requestContext", {})
+        .get("authorizer", {})
+        .get("user_id")
+    )
     return UserData(user_id=user_id)
 
 
