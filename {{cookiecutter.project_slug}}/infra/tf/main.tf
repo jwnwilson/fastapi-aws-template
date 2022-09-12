@@ -25,7 +25,7 @@ module "{{cookiecutter.project_slug}}_api" {
 }
 
 module "api_gateway" {
-  source = "github.com/jwnwilson/terraform-aws-modules/modules/apigateway"
+  source = "github.com/jwnwilson/terraform-aws-modules/modules/apigateway-authorizer"
 
   environment       = var.environment
   lambda_invoke_arn = module.{{cookiecutter.project_slug}}_api.lambda_function_invoke_arn
@@ -33,4 +33,5 @@ module "api_gateway" {
   domain            = "jwnwilson.co.uk"
   api_subdomain     = "{{cookiecutter.project_slug}}-${var.environment}"
   project           = "{{cookiecutter.project_slug}}"
+  authorizer_name   = "authorizer_api_gw_${var.environment}"
 }
