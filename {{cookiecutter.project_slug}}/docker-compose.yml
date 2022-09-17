@@ -9,9 +9,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app:/var/task/app
+      - ./src:/var/task/src
       - ./scripts:/var/task/scripts
-      - ./mypy.ini:/var/task/mypy.ini
       # For local auth with aws, assuming credential file exists
       - $HOME/.aws/credentials:/root/.aws/credentials:ro
     expose:
@@ -20,7 +19,7 @@ services:
       - 0.0.0.0:8888:80
     # Override lambda entry point to revert to default docker behaviour
     entrypoint: ""
-    command: "uvicorn app.adapter.into.fastapi.main:app --host 0.0.0.0 --port 80 --reload --debug"
+    command: "uvicorn src.app.adapter.into.fastapi.main:app --host 0.0.0.0 --port 80 --reload --debug"
 
   worker:
     image: {{cookiecutter.project_slug}}-api
@@ -30,14 +29,13 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app:/var/task/app
+      - ./src:/var/task/src
       - ./scripts:/var/task/scripts
-      - ./mypy.ini:/var/task/mypy.ini
       # For local auth with aws, assuming credential file exists
       - $HOME/.aws/credentials:/root/.aws/credentials:ro
     expose:
       - "9000"
     ports:
       - 0.0.0.0:9000:8080
-    command: "app.adapter.into.sqs.handler.lambda_handler"
+    command: "src.app.adapter.into.sqs.handler.lambda_handler"
 

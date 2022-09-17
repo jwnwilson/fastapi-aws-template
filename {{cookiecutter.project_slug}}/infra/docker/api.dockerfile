@@ -18,7 +18,7 @@ RUN poetry config repositories.${REPO} $CODEARTIFACT_REPOSITORY_URL && \
     poetry config http-basic.${REPO} aws $CODEARTIFACT_AUTH_TOKEN && \
     bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; else poetry install --no-root --no-dev ; fi"
 
-ADD ./app ${LAMBDA_TASK_ROOT}/app
+ADD ./src ${LAMBDA_TASK_ROOT}/src
 
 ENV PYTHONPATH ${LAMBDA_TASK_ROOT}/app
-CMD ["app.adapter.into.fastapi.lambda.handler"]
+CMD ["src.app.adapter.into.fastapi.lambda.handler"]

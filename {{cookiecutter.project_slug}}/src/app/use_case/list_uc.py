@@ -1,8 +1,9 @@
 from typing import List
 
-from domain.data import DataEntity
 from hex_lib.ports.db import DbAdapter
 from hex_lib.ports.storage import StorageAdapter
+
+from app.domain.data import DataEntity
 
 
 def list_uc(
