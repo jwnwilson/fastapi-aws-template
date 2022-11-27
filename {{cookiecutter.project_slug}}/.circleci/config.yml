@@ -113,3 +113,5 @@ workflows:
       - deploy-prod-apply:
           requires:
             - deploy-prod-approve
+          context:
+            - AWS
