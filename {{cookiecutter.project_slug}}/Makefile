@@ -1,9 +1,14 @@
 DOCKER_NAME=api
 DOCKER_COMMAND=docker-compose -f docker-compose.yml
+DOCKER_HEX_COMMAND=docker-compose -f docker-compose.yml -f docker-compose.hex.yml
 LOCAL_TASK_URL=http://localhost:9000/2015-03-31/functions/function/invocations
 
 build:
 	bash ./scripts/build.sh
+
+# push last build image to ECR
+push:
+	bash ./scripts/push.sh
 
 # push last build image to ECR
 push:
