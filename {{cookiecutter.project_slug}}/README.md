@@ -2,6 +2,8 @@
 
 A serverless (AWS lambda) FastAPI template intended to be extended with other microservices using SQS to communicate between services.
 
+This is a test edit to see how cruft works
+
 # Requirements
 
 This project requires installed on your OS.
